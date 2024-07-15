@@ -1,7 +1,7 @@
 FROM jlesage/baseimage-gui:debian-11
 
 ENV APP_NAME="115PC" \
-    APP_VERSION="2.0.9.3" \
+    APP_VERSION="2.0.10.2" \
     USER_ID=0 GROUP_ID=0 \
     DISPLAY_WIDTH="1280" \
     DISPLAY_HEIGHT="720" \
