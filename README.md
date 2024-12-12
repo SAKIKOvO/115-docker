@@ -1,5 +1,7 @@
 ## 115-docker
-A 115 browser container based on [Webtop](https://github.com/linuxserver/docker-webtop). You may access 115 browser with [KasmVNC](https://github.com/kasmtech/KasmVNC).
+A 115 browser container based on [Webtop](https://github.com/linuxserver/docker-webtop) with XFCE.
+
+<img src="https://github.com/user-attachments/assets/ef725ad1-4fca-4014-af50-e979f84aa6b5" style="width:500px;"/>
 
 ## How to use
 ### Docker Run
