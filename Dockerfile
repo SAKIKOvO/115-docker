@@ -1,15 +1,17 @@
-FROM jlesage/baseimage-gui:debian-11
+FROM lscr.io/linuxserver/webtop:debian-xfce
 
-ENV APP_NAME="115PC" \
-    APP_VERSION="v2.0.10.2" \
-    USER_ID=0 GROUP_ID=0 \
-    DISPLAY_WIDTH="1280" \
-    DISPLAY_HEIGHT="720" \
-    ENABLE_CJK_FONT=1 \
+ENV APP_NAME="115 Browser" \
+    APP_VERSION="v27.0.7.5" \
     LANG=zh_CN.UTF-8
 
-RUN apt -y update && apt -y upgrade && apt -y install curl locales && locale-gen $LANG && \
-    curl https://down.115.com/client/115pc/lin/115_${APP_VERSION}.deb -o /tmp/115_${APP_VERSION}.deb && \
-    dpkg -i /tmp/115_${APP_VERSION}.deb && rm -rf /var/lib/apt/lists/*
+RUN apt -y update && apt -y upgrade && apt -y install curl locales fonts-noto-cjk && locale-gen $LANG
 
-COPY startapp.sh /startapp.sh
+RUN curl https://down.115.com/client/115pc/lin/115br_${APP_VERSION}.deb -o /tmp/115br_${APP_VERSION}.deb && \
+    apt -y install /tmp/115br_${APP_VERSION}.deb
+
+RUN mkdir -p /config/.config/autostart && \
+    chmod 777 /usr/share/applications/115Browser.desktop && \
+    chown root:root /usr/share/applications/115Browser.desktop && \
+    ln -s /usr/share/applications/115Browser.desktop /config/.config/autostart/115Browser.desktop
+
+RUN rm -rf /var/lib/apt/lists/* /tmp/*
